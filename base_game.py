@@ -32,7 +32,7 @@ class BaseGame(object):
         title = constants.Title(title_font)
         #router = game_characters.Router()
         client = game_characters.Client(font)
-        self.all_sprites_list.add(router)
+        #self.all_sprites_list.add(router)
         self.all_sprites_list.add(client)
         self.title_sprite.add(title)
 

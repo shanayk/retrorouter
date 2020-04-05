@@ -4,8 +4,8 @@ import base_game
 
 
 def main():
-    pygame.init()
 
+    pygame.init()
     clock = pygame.time.Clock()
     # Create our objects and set the data
     font = pygame.font.Font(os.path.join("text",'Inconsolata-Regular.ttf'), 16)
