@@ -10,8 +10,11 @@ import random
 
 class Channel_Select(pygame.sprite.Sprite):
         """
-        This class represents the channel name and selection criteria, we use this to handle all channel selection and channel selection name animatons
+        This class represents the channel name and selection criteria, we use this to
+        handle all channel selection and channel selection name animatons
         It derives from the "Sprite" class in Pygame
+        Takes channel number, x axis position, width of bar and font as imput arguments.
+        The update method takes a channel counter as an argument.
         """
         def __init__(self,channel,x,width,font):
             """ Constructor. Pass in the size of the initial channel """
@@ -41,7 +44,7 @@ class Channel_Select(pygame.sprite.Sprite):
 class Channel_Name(pygame.sprite.Sprite):
         """
         This class represents each channel, this is to simulate the per channel spectral width and energy.
-        Takes channel,x,width as input parameters and
+        Takes channel,x,width as input parameters, update method takes a counter argument and
         It derives from the "Sprite" class in Pygame
         """
         def __init__(self,channel,x,width):

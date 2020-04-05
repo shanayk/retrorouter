@@ -15,7 +15,7 @@ from pygame.locals import *
 class BaseGame(object):
     """ This class represents an instance of the base game. If we need to
         reset the base game we'd just need to create a new instance of this
-        class. """
+        class. Takes channel_num, font and title_font as arguments."""
 
     def __init__(self,channel_num,font,title_font):
         """ Constructor. Create all our attributes and initialize

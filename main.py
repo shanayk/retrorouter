@@ -7,7 +7,7 @@ def main():
 
     pygame.init()
     clock = pygame.time.Clock()
-    # Create our objects and set the data
+    # initialize Pygame Fonts. Display and sets game window caption
     font = pygame.font.Font(os.path.join("text",'Inconsolata-Regular.ttf'), 16)
     title_font = pygame.font.Font(os.path.join("text",'Inconsolata-Regular.ttf'), 32)
     screen = pygame.display.set_mode((constants.width,constants.height))
@@ -18,20 +18,10 @@ def main():
 
     # Main game loop
     while not done:
-
-        # Process events (keystrokes, mouse clicks, etc)
         done = game.process_events()
-
-        # Update object positions, check for collisions
         game.run_logic()
-
-        # Draw the current frame
         game.display_frame(screen)
-
-        # Pause for the next frame
         clock.tick(60)
-
-    # Close window and exit
     pygame.quit()
 
 
