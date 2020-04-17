@@ -23,10 +23,12 @@ class BaseGame(object):
 
         self.game_over = False
         # Create sprite lists
+
         self.channel_select_list = pygame.sprite.Group()
         self.channel_list = pygame.sprite.Group()
         self.all_sprites_list = pygame.sprite.Group()
         self.title_sprite = pygame.sprite.Group()
+        self.noise_sprite = pygame.sprite.Group()
         self.bandwidth = int((constants.width/(channel_num-1)))
         self.counter = 5
         title = constants.Title(title_font)
@@ -41,8 +43,8 @@ class BaseGame(object):
             channel_select = channel.Channel_Select(i+1,self.bandwidth*i,self.bandwidth,font)
             self.channel_list.add(channel_name)
             self.channel_select_list.add(channel_select)
-            self.all_sprites_list.add(channel_name)
-            self.all_sprites_list.add(channel_select)
+            self.noise_sprite.add(self.channel_list)
+            self.noise_sprite.add(self.channel_select_list)
 
 
 
@@ -51,7 +53,7 @@ class BaseGame(object):
     def process_events(self):
         """ Process all of the events. Return a "True" if we need
         to close the window. """
-
+        slef.selected = False
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return True
@@ -68,12 +70,7 @@ class BaseGame(object):
                             print (sprites)
 
 
-
-
-
-
-
-
+        self.noise_sprite.update(self.counter,self.selected)
         return False
 
     def run_logic(self):
@@ -84,6 +81,7 @@ class BaseGame(object):
             # Move all the sprites
 
             self.all_sprites_list.update(self.counter)
+
 
 
     def display_frame(self, screen):
@@ -100,5 +98,6 @@ class BaseGame(object):
 
             self.all_sprites_list.draw(screen)
             self.title_sprite.draw(screen)
+            self.noise_sprite.draw(screen)
 
         pygame.display.flip()

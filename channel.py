@@ -32,7 +32,8 @@ class Channel_Select(pygame.sprite.Sprite):
             else:
                 return constants.GREEN
 
-        def update(self,counter):
+        def update(self,counter,selected):
+            self.selected = selected
             self.counter = counter
             self.image = self.font.render(self.text, True , self.color_selector())
             self.rect = self.image.get_rect()
@@ -58,12 +59,12 @@ class Channel_Name(pygame.sprite.Sprite):
             self.y_const = self.rect.y
             self.channel = channel
 
-        def update(self,counter):
+        def update(self,counter,selected):
             """ Called each frame. """
-            if counter == self.channel:
+            if selected is True:
                 self.added_noise = constants.height // 10
-            elif (counter == self.channel - 1) or (counter == self.channel + 1):
-                self.added_noise = constants.height // 40
+            #elif (counter == self.channel - 1) or (counter == self.channel + 1):     Need to come back to this later figure out a way to update co channels when next to selected channels.
+                #self.added_noise = constants.height // 40
             else:
                 self.added_noise = 0
             self.noise_fluctuation = random.randint(0,int(constants.height/200))
